@@ -162,12 +162,12 @@ jhipster:
     title: myblog API
     description: myblog API documentation
     version: 0.0.1
-    terms-of-service-url:
-    contact-name:
-    contact-url:
-    contact-email:
-    license: unlicensed
-    license-url:
+    terms-of-service-url: https://opensource.org/ToS
+    contact-name: admin
+    contact-url: https://opensource.org/contact
+    contact-email: administrator@hotmail.fr
+    license: open source
+    license-url: https://opensource.org/licenses
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
