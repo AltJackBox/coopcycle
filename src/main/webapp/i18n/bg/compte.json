@@ -1,0 +1,27 @@
+{
+  "myblogApp": {
+    "compte": {
+      "home": {
+        "title": "Comptes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Compte",
+        "createOrEditLabel": "Създайте или редактирайте Compte",
+        "notFound": "Comptes не са намерени"
+      },
+      "created": "Създаден е нов Compte с идентификатор {{ param }}",
+      "updated": "Compte с идентификатор {{ param }} e oбновен",
+      "deleted": "Compte с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Compte {{ id }}?"
+      },
+      "detail": {
+        "title": "Compte"
+      },
+      "id": "ID",
+      "name": "Name",
+      "role": "Role",
+      "cooperative": "Cooperative",
+      "panier": "Panier"
+    }
+  }
+}

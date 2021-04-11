@@ -1,0 +1,12 @@
+{
+  "myblogApp": {
+    "Role": {
+      "null": "",
+      "CLIENT": "CLIENT",
+      "COURSIER": "COURSIER",
+      "RESTAURATEUR": "RESTAURATEUR",
+      "DIRECTEUR_GENERAL": "DIRECTEUR_GENERAL",
+      "ACTIONNAIRE": "ACTIONNAIRE"
+    }
+  }
+}

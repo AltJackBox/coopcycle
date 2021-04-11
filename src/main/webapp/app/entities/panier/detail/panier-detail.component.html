@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="panier">
+      <h2 data-cy="panierDetailsHeading"><span jhiTranslate="myblogApp.panier.detail.title">Panier</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ panier.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.method">Method</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'myblogApp.SystemPaiment.' + panier.method }}">{{ panier.method }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.price">Price</span></dt>
+        <dd>
+          <span>{{ panier.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.isPaid">Is Paid</span></dt>
+        <dd>
+          <span>{{ panier.isPaid }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.course">Course</span></dt>
+        <dd>
+          <div *ngIf="panier.course">
+            <a [routerLink]="['/course', panier.course?.id, 'view']">{{ panier.course?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.compte">Compte</span></dt>
+        <dd>
+          <div *ngIf="panier.compte">
+            <a [routerLink]="['/compte', panier.compte?.id, 'view']">{{ panier.compte?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.panier.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="panier.restaurant">
+            <a [routerLink]="['/restaurant', panier.restaurant?.id, 'view']">{{ panier.restaurant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/panier', panier.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

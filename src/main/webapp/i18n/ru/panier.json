@@ -1,0 +1,30 @@
+{
+  "myblogApp": {
+    "panier": {
+      "home": {
+        "title": "Paniers",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Panier",
+        "createOrEditLabel": "Создать или отредактировать Panier",
+        "notFound": "Paniers не найдено"
+      },
+      "created": "Новый Panier создан с идентификатором {{ param }}",
+      "updated": "Panier обновлен с идентификатором {{ param }}",
+      "deleted": "Panier удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Panier {{ id }}?"
+      },
+      "detail": {
+        "title": "Panier"
+      },
+      "id": "ID",
+      "method": "Method",
+      "price": "Price",
+      "isPaid": "Is Paid",
+      "course": "Course",
+      "produit": "Produit",
+      "compte": "Compte",
+      "restaurant": "Restaurant"
+    }
+  }
+}

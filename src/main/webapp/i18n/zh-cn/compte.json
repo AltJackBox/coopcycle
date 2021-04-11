@@ -1,0 +1,27 @@
+{
+  "myblogApp": {
+    "compte": {
+      "home": {
+        "title": "Comptes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Compte",
+        "createOrEditLabel": "创建或编辑 Compte",
+        "notFound": "No Comptes found"
+      },
+      "created": "Compte {{ param }} 创建成功",
+      "updated": "Compte {{ param }} 更新成功",
+      "deleted": "Compte {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Compte {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Compte"
+      },
+      "id": "ID",
+      "name": "Name",
+      "role": "Role",
+      "cooperative": "Cooperative",
+      "panier": "Panier"
+    }
+  }
+}

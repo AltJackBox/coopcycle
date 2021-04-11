@@ -1,0 +1,28 @@
+{
+  "myblogApp": {
+    "produit": {
+      "home": {
+        "title": "Produits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Produit",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Produit",
+        "notFound": "No Produits found"
+      },
+      "created": "Նոր Produit ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Produit թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Produit հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Produit {{ id }}?"
+      },
+      "detail": {
+        "title": "Produit"
+      },
+      "id": "ID",
+      "name": "Name",
+      "price": "Price",
+      "isAvailable": "Is Available",
+      "restaurant": "Restaurant",
+      "panier": "Panier"
+    }
+  }
+}

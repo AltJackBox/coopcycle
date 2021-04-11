@@ -1,0 +1,30 @@
+{
+  "myblogApp": {
+    "panier": {
+      "home": {
+        "title": "Paniers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Panier",
+        "createOrEditLabel": "创建或编辑 Panier",
+        "notFound": "No Paniers found"
+      },
+      "created": "Panier {{ param }} 创建成功",
+      "updated": "Panier {{ param }} 更新成功",
+      "deleted": "Panier {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Panier {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Panier"
+      },
+      "id": "ID",
+      "method": "Method",
+      "price": "Price",
+      "isPaid": "Is Paid",
+      "course": "Course",
+      "produit": "Produit",
+      "compte": "Compte",
+      "restaurant": "Restaurant"
+    }
+  }
+}

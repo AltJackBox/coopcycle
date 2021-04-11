@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-compte-heading" data-cy="CompteCreateUpdateHeading" jhiTranslate="myblogApp.compte.home.createOrEditLabel">
+        Create or edit a Compte
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 3 }"
+            >
+              This field is required to be at least 3 characters.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.role" for="field_role">Role</label>
+          <select class="form-control" name="role" formControlName="role" id="field_role" data-cy="role">
+            <option [ngValue]="null">{{ 'myblogApp.Role.null' | translate }}</option>
+            <option value="CLIENT">{{ 'myblogApp.Role.CLIENT' | translate }}</option>
+            <option value="COURSIER">{{ 'myblogApp.Role.COURSIER' | translate }}</option>
+            <option value="RESTAURATEUR">{{ 'myblogApp.Role.RESTAURATEUR' | translate }}</option>
+            <option value="DIRECTEUR_GENERAL">{{ 'myblogApp.Role.DIRECTEUR_GENERAL' | translate }}</option>
+            <option value="ACTIONNAIRE">{{ 'myblogApp.Role.ACTIONNAIRE' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('role')!.invalid && (editForm.get('role')!.dirty || editForm.get('role')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('role')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.cooperative" for="field_cooperative">Cooperative</label>
+          <select class="form-control" id="field_cooperative" data-cy="cooperative" name="cooperative" formControlName="cooperative">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                cooperativeOption.id === editForm.get('cooperative')!.value?.id ? editForm.get('cooperative')!.value : cooperativeOption
+              "
+              *ngFor="let cooperativeOption of cooperativesCollection; trackBy: trackCooperativeById"
+            >
+              {{ cooperativeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

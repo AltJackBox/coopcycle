@@ -1,0 +1,49 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "openTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "closeTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "produit"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "panier",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "panier"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cooperative",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "cooperative"
+    }
+  ],
+  "entityTableName": "restaurant",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411080134"
+}

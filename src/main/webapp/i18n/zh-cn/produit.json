@@ -1,0 +1,28 @@
+{
+  "myblogApp": {
+    "produit": {
+      "home": {
+        "title": "Produits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Produit",
+        "createOrEditLabel": "创建或编辑 Produit",
+        "notFound": "No Produits found"
+      },
+      "created": "Produit {{ param }} 创建成功",
+      "updated": "Produit {{ param }} 更新成功",
+      "deleted": "Produit {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Produit {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Produit"
+      },
+      "id": "ID",
+      "name": "Name",
+      "price": "Price",
+      "isAvailable": "Is Available",
+      "restaurant": "Restaurant",
+      "panier": "Panier"
+    }
+  }
+}

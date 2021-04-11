@@ -1,0 +1,54 @@
+// entities
+entity Compte {
+  	name String required minlength(3) maxlength(30),
+  	role Role required,
+}
+entity Panier {
+	method SystemPaiment,
+    price Float min(0),
+    isPaid Boolean required,
+}
+entity Course {
+	deliveryTime Duration
+}
+entity Produit {
+    name String required minlength(3),
+    price Float required min(0),
+    isAvailable Boolean required,
+}
+entity Restaurant {
+	name String required minlength(3),
+    openTime Instant,
+    closeTime Instant,
+}
+entity Cooperative {
+	name String required minlength(3) unique,
+    geographicalArea String,
+}
+
+// enumerations
+enum SystemPaiment {
+	PAYPAL, CB, MASTERCARD, BITCOIN, IZLY, APPLE_PAY, GOOGLE_PAY, CHEQUE_RESTO
+}
+enum Role {
+	CLIENT, COURSIER, RESTAURATEUR, DIRECTEUR_GENERAL, ACTIONNAIRE
+}
+
+// relationships
+relationship OneToMany {
+    Compte to Panier, // le client peut avoir plusieurs paniers
+    Compte to Panier, // le livreur livre plusieurs paniers
+    Cooperative to Restaurant, // une coopérative à plusieurs restaurant
+    Restaurant to Produit, // Un restaurant à plusieurs produits
+    Restaurant to Panier, // plusieurs paniers pour un meme restaurant
+    Panier to Produit, // plusieurs produits pour un panier
+}
+relationship OneToOne {
+	Panier to Course, // isPaid doit etre vrai
+    Compte to Cooperative, //le directeur general
+    Compte to Cooperative, //l'Actionnaire
+}
+
+paginate * with infinite-scroll
+dto * with mapstruct
+service * with serviceImpl

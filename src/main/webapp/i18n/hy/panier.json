@@ -1,0 +1,30 @@
+{
+  "myblogApp": {
+    "panier": {
+      "home": {
+        "title": "Paniers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Panier",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Panier",
+        "notFound": "No Paniers found"
+      },
+      "created": "Նոր Panier ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Panier թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Panier հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Panier {{ id }}?"
+      },
+      "detail": {
+        "title": "Panier"
+      },
+      "id": "ID",
+      "method": "Method",
+      "price": "Price",
+      "isPaid": "Is Paid",
+      "course": "Course",
+      "produit": "Produit",
+      "compte": "Compte",
+      "restaurant": "Restaurant"
+    }
+  }
+}

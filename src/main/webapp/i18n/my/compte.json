@@ -1,0 +1,27 @@
+{
+  "myblogApp": {
+    "compte": {
+      "home": {
+        "title": "Comptes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Compte အသစ်ထည့်မည်",
+        "createOrEditLabel": "Compte အသစ်ထည့်ခြင်း (သို့) ပြုပြင်ခြင်း",
+        "notFound": "No Comptes found"
+      },
+      "created": "{{ param }} အိုင်ဒီဖြင့် Compte အသစ်တစ်ခုအား ထည့်ပြီးပါပြီ။",
+      "updated": "{{ param }} အိုင်ဒီဖြင့် Compte တစ်ခုအား ပြုပြင်ပြီးပါပြီ။",
+      "deleted": "{{ param }} အိုင်ဒီဖြင့် Compte တစ်ခုအား ဖျက်ပြီးပါပြီ။",
+      "delete": {
+        "question": "Compte {{ id }} အား ဖျက်ပါမည်။ သေချာပါသလား?"
+      },
+      "detail": {
+        "title": "Compte"
+      },
+      "id": "ID",
+      "name": "Name",
+      "role": "Role",
+      "cooperative": "Cooperative",
+      "panier": "Panier"
+    }
+  }
+}

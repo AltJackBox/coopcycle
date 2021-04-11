@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-panier-heading" data-cy="PanierCreateUpdateHeading" jhiTranslate="myblogApp.panier.home.createOrEditLabel">
+        Create or edit a Panier
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.method" for="field_method">Method</label>
+          <select class="form-control" name="method" formControlName="method" id="field_method" data-cy="method">
+            <option [ngValue]="null">{{ 'myblogApp.SystemPaiment.null' | translate }}</option>
+            <option value="PAYPAL">{{ 'myblogApp.SystemPaiment.PAYPAL' | translate }}</option>
+            <option value="CB">{{ 'myblogApp.SystemPaiment.CB' | translate }}</option>
+            <option value="MASTERCARD">{{ 'myblogApp.SystemPaiment.MASTERCARD' | translate }}</option>
+            <option value="BITCOIN">{{ 'myblogApp.SystemPaiment.BITCOIN' | translate }}</option>
+            <option value="IZLY">{{ 'myblogApp.SystemPaiment.IZLY' | translate }}</option>
+            <option value="APPLE_PAY">{{ 'myblogApp.SystemPaiment.APPLE_PAY' | translate }}</option>
+            <option value="GOOGLE_PAY">{{ 'myblogApp.SystemPaiment.GOOGLE_PAY' | translate }}</option>
+            <option value="CHEQUE_RESTO">{{ 'myblogApp.SystemPaiment.CHEQUE_RESTO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+          <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('price')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.isPaid" for="field_isPaid">Is Paid</label>
+          <input type="checkbox" class="form-check" name="isPaid" id="field_isPaid" data-cy="isPaid" formControlName="isPaid" />
+          <div *ngIf="editForm.get('isPaid')!.invalid && (editForm.get('isPaid')!.dirty || editForm.get('isPaid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('isPaid')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.course" for="field_course">Course</label>
+          <select class="form-control" id="field_course" data-cy="course" name="course" formControlName="course">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="courseOption.id === editForm.get('course')!.value?.id ? editForm.get('course')!.value : courseOption"
+              *ngFor="let courseOption of coursesCollection; trackBy: trackCourseById"
+            >
+              {{ courseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.compte" for="field_compte">Compte</label>
+          <select class="form-control" id="field_compte" data-cy="compte" name="compte" formControlName="compte">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="compteOption.id === editForm.get('compte')!.value?.id ? editForm.get('compte')!.value : compteOption"
+              *ngFor="let compteOption of comptesSharedCollection; trackBy: trackCompteById"
+            >
+              {{ compteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

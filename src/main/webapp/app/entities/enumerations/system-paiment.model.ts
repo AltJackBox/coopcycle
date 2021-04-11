@@ -1,0 +1,17 @@
+export enum SystemPaiment {
+  PAYPAL = 'PAYPAL',
+
+  CB = 'CB',
+
+  MASTERCARD = 'MASTERCARD',
+
+  BITCOIN = 'BITCOIN',
+
+  IZLY = 'IZLY',
+
+  APPLE_PAY = 'APPLE_PAY',
+
+  GOOGLE_PAY = 'GOOGLE_PAY',
+
+  CHEQUE_RESTO = 'CHEQUE_RESTO',
+}

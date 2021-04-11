@@ -1,0 +1,40 @@
+{
+  "name": "Cooperative",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "unique"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "geographicalArea",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "cooperative",
+      "relationshipName": "restaurant"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "cooperative",
+      "relationshipName": "compte",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "cooperative",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411080135"
+}

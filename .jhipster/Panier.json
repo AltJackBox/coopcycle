@@ -1,0 +1,58 @@
+{
+  "name": "Panier",
+  "fields": [
+    {
+      "fieldName": "method",
+      "fieldType": "SystemPaiment",
+      "fieldValues": "PAYPAL,CB,MASTERCARD,BITCOIN,IZLY,APPLE_PAY,GOOGLE_PAY,CHEQUE_RESTO"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "isPaid",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "panier",
+      "relationshipName": "course",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "panier",
+      "relationshipName": "produit"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "panier",
+      "relationshipName": "compte"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "panier",
+      "relationshipName": "restaurant"
+    }
+  ],
+  "entityTableName": "panier",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411080131"
+}

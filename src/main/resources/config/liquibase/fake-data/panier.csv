@@ -1,0 +1,11 @@
+id;method;price;is_paid
+1;BITCOIN;81213;false
+2;PAYPAL;14913;false
+3;GOOGLE_PAY;72716;false
+4;BITCOIN;62180;true
+5;CHEQUE_RESTO;60691;true
+6;BITCOIN;1653;false
+7;IZLY;60883;false
+8;CHEQUE_RESTO;27201;true
+9;IZLY;9003;true
+10;CB;9725;false

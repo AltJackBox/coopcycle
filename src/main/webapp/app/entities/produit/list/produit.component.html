@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="ProduitHeading">
+    <span jhiTranslate="myblogApp.produit.home.title">Produits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myblogApp.produit.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-produit"
+        [routerLink]="['/produit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myblogApp.produit.home.createLabel"> Create a new Produit </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="produits?.length === 0">
+    <span jhiTranslate="myblogApp.produit.home.notFound">No produits found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="produits && produits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="myblogApp.produit.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="price"><span jhiTranslate="myblogApp.produit.price">Price</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isAvailable">
+            <span jhiTranslate="myblogApp.produit.isAvailable">Is Available</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="restaurant.id">
+            <span jhiTranslate="myblogApp.produit.restaurant">Restaurant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="panier.id">
+            <span jhiTranslate="myblogApp.produit.panier">Panier</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let produit of produits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/produit', produit.id, 'view']">{{ produit.id }}</a>
+          </td>
+          <td>{{ produit.name }}</td>
+          <td>{{ produit.price }}</td>
+          <td>{{ produit.isAvailable }}</td>
+          <td>
+            <div *ngIf="produit.restaurant">
+              <a [routerLink]="['/restaurant', produit.restaurant?.id, 'view']">{{ produit.restaurant?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="produit.panier">
+              <a [routerLink]="['/panier', produit.panier?.id, 'view']">{{ produit.panier?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/produit', produit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/produit', produit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(produit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

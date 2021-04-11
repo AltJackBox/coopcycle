@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="RestaurantHeading">
+    <span jhiTranslate="myblogApp.restaurant.home.title">Restaurants</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myblogApp.restaurant.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-restaurant"
+        [routerLink]="['/restaurant/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myblogApp.restaurant.home.createLabel"> Create a new Restaurant </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="restaurants?.length === 0">
+    <span jhiTranslate="myblogApp.restaurant.home.notFound">No restaurants found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="restaurants && restaurants.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span jhiTranslate="myblogApp.restaurant.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="openTime">
+            <span jhiTranslate="myblogApp.restaurant.openTime">Open Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="closeTime">
+            <span jhiTranslate="myblogApp.restaurant.closeTime">Close Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cooperative.id">
+            <span jhiTranslate="myblogApp.restaurant.cooperative">Cooperative</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let restaurant of restaurants; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/restaurant', restaurant.id, 'view']">{{ restaurant.id }}</a>
+          </td>
+          <td>{{ restaurant.name }}</td>
+          <td>{{ restaurant.openTime | formatMediumDatetime }}</td>
+          <td>{{ restaurant.closeTime | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="restaurant.cooperative">
+              <a [routerLink]="['/cooperative', restaurant.cooperative?.id, 'view']">{{ restaurant.cooperative?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/restaurant', restaurant.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/restaurant', restaurant.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(restaurant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

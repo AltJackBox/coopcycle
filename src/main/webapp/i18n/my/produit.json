@@ -1,0 +1,28 @@
+{
+  "myblogApp": {
+    "produit": {
+      "home": {
+        "title": "Produits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Produit အသစ်ထည့်မည်",
+        "createOrEditLabel": "Produit အသစ်ထည့်ခြင်း (သို့) ပြုပြင်ခြင်း",
+        "notFound": "No Produits found"
+      },
+      "created": "{{ param }} အိုင်ဒီဖြင့် Produit အသစ်တစ်ခုအား ထည့်ပြီးပါပြီ။",
+      "updated": "{{ param }} အိုင်ဒီဖြင့် Produit တစ်ခုအား ပြုပြင်ပြီးပါပြီ။",
+      "deleted": "{{ param }} အိုင်ဒီဖြင့် Produit တစ်ခုအား ဖျက်ပြီးပါပြီ။",
+      "delete": {
+        "question": "Produit {{ id }} အား ဖျက်ပါမည်။ သေချာပါသလား?"
+      },
+      "detail": {
+        "title": "Produit"
+      },
+      "id": "ID",
+      "name": "Name",
+      "price": "Price",
+      "isAvailable": "Is Available",
+      "restaurant": "Restaurant",
+      "panier": "Panier"
+    }
+  }
+}

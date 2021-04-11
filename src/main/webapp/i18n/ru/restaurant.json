@@ -1,0 +1,29 @@
+{
+  "myblogApp": {
+    "restaurant": {
+      "home": {
+        "title": "Restaurants",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Restaurant",
+        "createOrEditLabel": "Создать или отредактировать Restaurant",
+        "notFound": "Restaurants не найдено"
+      },
+      "created": "Новый Restaurant создан с идентификатором {{ param }}",
+      "updated": "Restaurant обновлен с идентификатором {{ param }}",
+      "deleted": "Restaurant удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Restaurant {{ id }}?"
+      },
+      "detail": {
+        "title": "Restaurant"
+      },
+      "id": "ID",
+      "name": "Name",
+      "openTime": "Open Time",
+      "closeTime": "Close Time",
+      "produit": "Produit",
+      "panier": "Panier",
+      "cooperative": "Cooperative"
+    }
+  }
+}
